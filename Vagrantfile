@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "Centos-6.4"
-  config.vm.box_url = "http://mdub-vagrant-images.s3.amazonaws.com/Centos-6.4.box"
+  config.vm.box = "centos65_64"
+  config.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
 
   config.vm.network :private_network, ip: "192.168.66.2"
 
