@@ -8,8 +8,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :private_network, ip: "192.168.66.2"
 
-  config.vm.synced_folder "#{ENV['HOME']}/Projects", "/projects"
-  config.vm.network :forwarded_port, host: 8888, guest: 80
+  HOME = ENV['HOME']
+  config.vm.synced_folder HOME, HOME
 
   config.vm.provision :shell, :path => "provision/docker.sh"
 
