@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   HOME = ENV['HOME']
   config.vm.synced_folder HOME, HOME
 
+  # requires the "vagrant-persistent-storage" plugin
   config.persistent_storage.enabled = true
   config.persistent_storage.location = File.expand_path("../var-lib-docker.vmdk", __FILE__)
   config.persistent_storage.size = 40000
@@ -21,6 +22,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "provision/apt.sh"
   config.vm.provision :shell, :path => "provision/docker-config.sh"
 
+  # requires Vagrant 1.5
   config.vm.provision "docker"
 
 end
