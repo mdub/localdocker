@@ -17,12 +17,9 @@ Vagrant.configure("2") do |config|
   config.persistent_storage.filesystem = 'ext4'
   config.persistent_storage.mountpoint = '/var/lib/docker'
 
+  config.vm.provision :shell, :path => "provision/hostname.sh"
   config.vm.provision :shell, :path => "provision/apt.sh"
   config.vm.provision :shell, :path => "provision/docker-config.sh"
-
-  # config.vm.provision :shell, :inline => <<-'BASH'
-  #   hostname localdocker
-  # BASH
 
   config.vm.provision "docker"
 
