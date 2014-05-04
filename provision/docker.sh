@@ -1,18 +1,11 @@
 #! /bin/sh
 
-cat <<EOF > /etc/sysconfig/docker
-# /etc/sysconfig/docker
-#
-# Other arguments to pass to the docker daemon process
-# These will be parsed by the sysv initscript and appended
-# to the arguments list passed to docker -d
+wget -q -O - https://get.docker.io/ubuntu | sh
 
-other_args="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
+cat <<EOF > /etc/default/docker
+DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
 EOF
 
-rpm --upgrade --force http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-yum install -y docker-io
-chkconfig docker on
-service docker start
+service docker restart
 
 usermod -a -G docker vagrant
