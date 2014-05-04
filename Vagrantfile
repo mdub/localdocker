@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder HOME, HOME
 
   config.persistent_storage.enabled = true
-  config.persistent_storage.location = "docker-cache.vmdk"
+  config.persistent_storage.location = File.expand_path("../docker-cache.vmdk", __FILE__)
   config.persistent_storage.size = 30000
   config.persistent_storage.mountname = 'docker'
   config.persistent_storage.filesystem = 'ext4'
