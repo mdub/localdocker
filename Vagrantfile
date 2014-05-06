@@ -20,9 +20,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :shell, :path => "provision/hostname.sh"
   config.vm.provision :shell, :path => "provision/apt.sh"
-  config.vm.provision :shell, :path => "provision/docker-config.sh"
-
-  # requires Vagrant 1.5
-  config.vm.provision "docker"
+  config.vm.provision :shell, :path => "provision/docker.sh"
 
 end
