@@ -4,7 +4,7 @@ This is a Vagrant-based Docker host, for local development.
 
 ## Prerequisites
 
-You will need Vagrant 1.5, for it's Docker support.
+You will need Vagrant. And VirtualBox.
 
 You'll also need the "vagrant-persistent-storage" plugin. This is used to create a persistent `/var/lib/docker` volume that survives VM rebuilds.  You can install it with
 
