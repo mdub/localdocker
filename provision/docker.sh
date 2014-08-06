@@ -14,3 +14,14 @@ DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
 EOF
 
 service docker restart
+
+cat <<EOF > /etc/logrotate.d/docker
+/var/lib/docker/containers/*/*-json.log {
+  rotate 2
+  daily
+  compress
+  missingok
+  notifempty
+  copytruncate
+}
+EOF

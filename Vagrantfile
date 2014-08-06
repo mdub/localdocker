@@ -23,6 +23,4 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "provision/apt.sh"
   config.vm.provision :shell, :path => "provision/docker.sh"
 
-  config.vm.provision :file, :source => "provision/docker.logrotate", :destination => "/etc/logrotate.d/docker"
-
 end
