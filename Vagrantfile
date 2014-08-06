@@ -18,8 +18,11 @@ Vagrant.configure("2") do |config|
   config.persistent_storage.filesystem = 'ext4'
   config.persistent_storage.mountpoint = '/var/lib/docker'
 
+
   config.vm.provision :shell, :path => "provision/hostname.sh"
   config.vm.provision :shell, :path => "provision/apt.sh"
   config.vm.provision :shell, :path => "provision/docker.sh"
+
+  config.vm.provision :file, :source => "provision/docker.logrotate", :destination => "/etc/logrotate.d/docker"
 
 end
