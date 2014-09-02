@@ -1,12 +1,6 @@
 #! /bin/sh
 
-cat <<EOF > /etc/apt/sources.list
-deb http://au.archive.ubuntu.com/ubuntu/ precise main restricted
-deb http://au.archive.ubuntu.com/ubuntu/ precise-updates main restricted
+sed -i -e 's|http://archive.ubuntu.com/ubuntu |mirror://mirrors.ubuntu.com/mirrors.txt |g' /etc/apt/sources.list
 
-deb http://au.archive.ubuntu.com/ubuntu/ precise universe
-deb http://au.archive.ubuntu.com/ubuntu/ precise-updates universe
-
-deb http://security.ubuntu.com/ubuntu precise-security main restricted
-deb http://security.ubuntu.com/ubuntu precise-security universe
-EOF
+apt-get -y -q update
+DEBIAN_FRONTEND=noninteractive apt-get -y -q upgrade
