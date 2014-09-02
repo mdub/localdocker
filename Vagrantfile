@@ -7,6 +7,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.network :private_network, ip: "192.168.66.2"
 
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
+  end
+
   HOME = ENV['HOME']
   config.vm.synced_folder HOME, HOME
 
@@ -17,7 +22,6 @@ Vagrant.configure("2") do |config|
   config.persistent_storage.mountname = 'docker'
   config.persistent_storage.filesystem = 'ext4'
   config.persistent_storage.mountpoint = '/var/lib/docker'
-
 
   config.vm.provision :shell, :path => "provision/hostname.sh"
   config.vm.provision :shell, :path => "provision/apt.sh"
